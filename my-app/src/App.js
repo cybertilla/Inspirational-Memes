@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 
 function App() {
@@ -14,7 +13,7 @@ function App() {
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav me-auto">
+            <ul class="navbar-nav ms-auto ">
               <li class="nav-item">
                 <a class="nav-link" aria-current="page" href="#">My mems</a>
               </li>
@@ -27,9 +26,10 @@ function App() {
       </nav>
       <div className="container mt-5">
         <h1 className="text-center">Inspirational mems</h1>
-        <div class="d-grid gap-2 col-1 mx-auto mt-4">
-          <button className="btn btn-dark" type="button">Start</button>
+        <div class="d-grid gap-2 col-2 mx-auto mt-4">
+          <button className="btn btn-dark" type="button">Generate Mems</button>
         </div>
+       
       </div>
     </div>
 
