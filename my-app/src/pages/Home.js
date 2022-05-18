@@ -5,6 +5,9 @@ const Home = () => {
             <div class="d-grid gap-2 col-2 mx-auto mt-4">
                 <button className="btn btn-dark" type="button">Generate Mems</button>
             </div>
+            <div class="d-grid gap-2 col-2 mx-auto mt-4">
+                <button className="btn btn-dark" type="button">Generate Text</button>
+            </div>
         </div>
     );
 };
