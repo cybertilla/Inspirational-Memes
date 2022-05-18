@@ -1,11 +1,17 @@
 import './App.css';
+import Home from "./pages/Home";
+import Meme from "./pages/Meme";
+import Text from "./pages/Text";
+import MyMeme from "./pages/MyMeme";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
 
 function App() {
   return (
-    <div>
+    <BrowserRouter>
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
         <div className="container-md">
-          <a className="navbar-brand text-light" href="#">
+          <a className="navbar-brand text-light" href="/">
             <img src="https://i.pinimg.com/474x/27/14/51/2714519483a333b8a2f0277aed704b89.jpg" alt="" width="30" height="24" className="d-inline-block align-text-top" />
             Inspirational Mems
           </a>
@@ -15,25 +21,29 @@ function App() {
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto ">
               <li class="nav-item">
-                <a class="nav-link" aria-current="page" href="#">My mems</a>
+                <a class="nav-link" aria-current="page" href="/MyMeme">My mems</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Mem generator</a>
+                <a class="nav-link" aria-current="page" href="/Text">Generate Text</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/Meme">Generate Meme</a>
               </li>
             </ul>
           </div>
         </div>
       </nav>
-      <div className="container mt-5">
-        <h1 className="text-center">Inspirational mems</h1>
-        <div class="d-grid gap-2 col-2 mx-auto mt-4">
-          <button className="btn btn-dark" type="button">Generate Mems</button>
-        </div>
-       
-      </div>
-    </div>
-
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/Meme" element={<Meme />} />
+        <Route path="/Text" element={<Text />} />
+        <Route path="/MyMeme" element={<MyMeme />} />
+      </Routes>
+    </BrowserRouter>
   );
+
+
+
 }
 
 export default App;
