@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 
-
 const Text = () => {
 
   const [quote, setQuote] = useState(null);
@@ -8,18 +7,27 @@ const Text = () => {
 
   if (quote === null && loading === false) {
     setLoading(true);
-    fetch('https://api.quotable.io/random')
-      .then(response => response.json())
-      .then(data => {
-        setQuote(data.content)
-      });
+    let quoteList = []
+
+
+    for (let i = 0; i < 4; i++) {
+      fetch('https://api.quotable.io/random')
+        .then(response => response.json())
+        .then(data => {
+          quoteList.push(data.content)
+        })   
+    }
+
+    console.log(quoteList)
+    setQuote(quoteList)
+
+
   }
 
   return (
     <div>
       <h1>Text page</h1>
       {quote === null || <p>{quote}</p>}
-      
     </div>
 
   );
