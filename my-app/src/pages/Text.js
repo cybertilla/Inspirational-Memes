@@ -7,25 +7,29 @@ const Text = () => {
   let quoteList = []
 
   if (quotes === null && loading === false) {
-    
-    
+
+    setLoading(true);
+
     for (let i = 0; i < 4; i++) {
-      
+
       fetch('https://api.quotable.io/random')
         .then(response => response.json())
         .then(data => {
-          quoteList.push(data.content)
-          setQuote([...quoteList] ); 
+          quoteList.push({ "id": i, "quote": data.content })
+          setQuote([...quoteList]);
         })
     }
-    setLoading(true);
+
   }
+
+
+  console.log(quotes)
 
   return (
     <div>
       <h1>Text page</h1>
-      {quotes === null || quotes.map((quote) => <p>{quote}</p>)}
-      
+      {quotes === null || quotes.map((quote) => <p key={quote.id}>{quote.quote}</p>)}
+
     </div>
 
   );
