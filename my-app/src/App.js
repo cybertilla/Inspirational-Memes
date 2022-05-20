@@ -15,19 +15,19 @@ function App() {
             <img src="https://i.pinimg.com/474x/27/14/51/2714519483a333b8a2f0277aed704b89.jpg" alt="" width="30" height="24" className="d-inline-block align-text-top" />
             Inspirational Mems
           </a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
+          <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span className="navbar-toggler-icon"></span>
           </button>
-          <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto ">
-              <li class="nav-item">
-                <a class="nav-link" aria-current="page" href="/MyMeme">My mems</a>
+          <div className="collapse navbar-collapse" id="navbarNav">
+            <ul className="navbar-nav ms-auto ">
+              <li className="nav-item">
+                <a className="nav-link" aria-current="page" href="/MyMeme">My mems</a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" aria-current="page" href="/Text">Generate Text</a>
+              <li className="nav-item">
+                <a className="nav-link" aria-current="page" href="/Text">Generate Text</a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/Meme">Generate Meme</a>
+              <li className="nav-item">
+                <a className="nav-link" href="/Meme">Generate Meme</a>
               </li>
             </ul>
           </div>

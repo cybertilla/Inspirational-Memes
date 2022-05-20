@@ -7,7 +7,7 @@ const Text = () => {
   let quoteList = []
 
   if (quotes === null && loading === false) {
-    setLoading(true);
+    
     
     for (let i = 0; i < 4; i++) {
       
@@ -18,6 +18,7 @@ const Text = () => {
           setQuote([...quoteList] ); 
         })
     }
+    setLoading(true);
   }
 
   return (
