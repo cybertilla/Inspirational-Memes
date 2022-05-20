@@ -24,31 +24,15 @@ const Text = () => {
 
 
   console.log(quotes)
-  
 
-  if((quotes != null && quotes.length < 4) || quotes === null)
-  {
-    return (
-    
-      <div>
-        <h1>Text page</h1>
-        <p>Loading texts...</p>
-      </div>
-    )
-    
-  }
-  else
-  {
-    return (
-      <div>
-        <h1>Text page</h1>
-        {quotes === null || quotes.map((quote) => <p key={quote.id}>{quote.quote}</p>)}
-      </div>
-  
-    );
-  }
-  
-  
+  return (
+    <div className='container'>
+      <h1>Text page</h1>
+      {(quotes != null && quotes.length == 4) ? quotes.map((quote) => <p key={quote.id}>{quote.quote}</p>) : <div><p>Loading text...</p></div>}
+    </div>
+  );
+
+
 };
 
 export default Text;
