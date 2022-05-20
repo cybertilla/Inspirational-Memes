@@ -26,14 +26,11 @@ const Text = () => {
   console.log(quotes)
 
   return (
-    <div className='container'>
-      <h1>Quote page</h1>
-
-
-
+    <div className='container mt-4'>
+      <h1 className="mb-4">Inspirational Quotes</h1>
       {(quotes != null && quotes.length === 4) ? quotes.map((quote) =>
-        <div class="card">
-          <div class="card-body">
+        <div className="card mt-2">
+          <div className="card-body">
             <p key={quote.id}>{quote.quote}</p>
           </div>
         </div> 
