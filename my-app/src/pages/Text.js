@@ -27,8 +27,17 @@ const Text = () => {
 
   return (
     <div className='container'>
-      <h1>Text page</h1>
-      {(quotes != null && quotes.length === 4) ? quotes.map((quote) => <p key={quote.id}>{quote.quote}</p>) : <div><p>Loading text...</p></div>}
+      <h1>Quote page</h1>
+
+
+
+      {(quotes != null && quotes.length === 4) ? quotes.map((quote) =>
+        <div class="card">
+          <div class="card-body">
+            <p key={quote.id}>{quote.quote}</p>
+          </div>
+        </div> 
+        ) : <div><p>Loading text...</p></div>}
     </div>
   );
 
