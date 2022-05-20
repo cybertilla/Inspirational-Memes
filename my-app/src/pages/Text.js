@@ -27,7 +27,6 @@ const Text = () => {
 
   return (
     <div className='container mt-4'>
-      <h1 className="mb-4">Inspirational Quotes</h1>
       {(quotes != null && quotes.length === 4) ? quotes.map((quote) =>
         <div className="card mt-2">
           <div className="card-body">

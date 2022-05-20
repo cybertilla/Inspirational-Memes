@@ -21,9 +21,8 @@ const Meme = () => {
 
   
   return (
-    <div>
-      <h1>Meme page</h1>
-      {image === null || <img src={image} alt="Meme" />}
+    <div className="container mt-4">
+      {image === null || <img src={image} className="mx-auto d-block" alt="Meme" />}
     </div>
 
   );
