@@ -38,10 +38,14 @@ const Text = () => {
       ) : <div><p>Loading text...</p></div>}
 
       <div id="myModal" className="modal" tabIndex="-1">
-        <div className="modal-dialog">
-          <div id="myInput" className="modal-content">
-            <div className="modal-body">
-              <h1>{quote}</h1>
+        <div className="modal-dialog modal-fullscreen">
+          <div className="modal-content">
+            <div className="modal-body mx-auto">
+              <h1 className="modal-dialog-centered text-center">{quote}</h1>
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Save Meme</button>
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
             </div>
           </div>
         </div>
