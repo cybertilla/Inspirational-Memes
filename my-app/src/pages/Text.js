@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 
 const Text = () => {
-
   const [quotes, setQuote] = useState(null);
   const [loading, setLoading] = useState(false);
   let quoteList = []
@@ -19,21 +18,33 @@ const Text = () => {
           setQuote([...quoteList]);
         })
     }
-
   }
 
+  function HandleClick(prop) {
+    console.log(prop)
+  }
 
-  console.log(quotes)
 
   return (
     <div className='container mt-4'>
       {(quotes != null && quotes.length === 4) ? quotes.map((quote) =>
-        <div className="card mt-2">
+        <div key={quote.id} className="card mt-2">
           <div className="card-body">
-            <p key={quote.id}>{quote.quote}</p>
+            <p key={quote.id} data-bs-toggle="modal" data-bs-target="#myModal" onClick={() => HandleClick(quote.quote)}>{quote.quote}</p>
           </div>
-        </div> 
-        ) : <div><p>Loading text...</p></div>}
+        </div>
+      ) : <div><p>Loading text...</p></div>}
+
+      <div id="myModal" className="modal" tabIndex="-1">
+        <div className="modal-dialog">
+          <div id="myInput" className="modal-content">
+            <div className="modal-body">
+              <h1>H</h1>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
   );
 
