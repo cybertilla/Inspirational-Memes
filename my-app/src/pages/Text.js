@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 
 const Text = () => {
+
+  const [quote, setModal] = useState(0);
   const [quotes, setQuote] = useState(null);
   const [loading, setLoading] = useState(false);
   let quoteList = []
@@ -21,7 +23,7 @@ const Text = () => {
   }
 
   function HandleClick(prop) {
-    console.log(prop)
+    setModal(prop)
   }
 
 
@@ -39,7 +41,7 @@ const Text = () => {
         <div className="modal-dialog">
           <div id="myInput" className="modal-content">
             <div className="modal-body">
-              <h1>H</h1>
+              <h1>{quote}</h1>
             </div>
           </div>
         </div>
