@@ -30,7 +30,7 @@ const Text = () => {
   return (
     <div className='container mt-4'>
       {(quotes != null && quotes.length === 4) ? quotes.map((quote) =>
-        <div key={quote.id} className="card mt-2"  data-bs-toggle="modal" data-bs-target="#myModal" onClick={() => HandleClick(quote.quote)}>
+        <div key={quote.id} className="card mt-2" data-bs-toggle="modal" data-bs-target="#myModal" onClick={() => HandleClick(quote.quote)}>
           <div className="card-body">
             <p key={quote.id}>{quote.quote}</p>
           </div>
@@ -43,9 +43,22 @@ const Text = () => {
             <div className="modal-body mx-auto">
               <h1 className="modal-dialog-centered text-center">{quote}</h1>
             </div>
-            <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Save Meme</button>
+            <div className="modal-footer">
+
+
+
+
+              <form id="memeId">
+                <input type="text" className="form-control"  placeholder="Meme ID..." />
+              </form>
+
+              <button type="submit" form="memeId" className="btn btn-secondary">Save Meme</button>
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
+
+
+
+
             </div>
           </div>
         </div>
