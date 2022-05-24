@@ -1,4 +1,5 @@
 # Inspirational-Memes
-uni project
+Flerplattformsapplikationer med webbtekniker
+Malmö UniversityV22
 
-##Uses memegen API and quotable API
+## Uses memegen API and quotable API
