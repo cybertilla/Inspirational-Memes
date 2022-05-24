@@ -30,9 +30,9 @@ const Text = () => {
   return (
     <div className='container mt-4'>
       {(quotes != null && quotes.length === 4) ? quotes.map((quote) =>
-        <div key={quote.id} className="card mt-2">
+        <div key={quote.id} className="card mt-2"  data-bs-toggle="modal" data-bs-target="#myModal" onClick={() => HandleClick(quote.quote)}>
           <div className="card-body">
-            <p key={quote.id} data-bs-toggle="modal" data-bs-target="#myModal" onClick={() => HandleClick(quote.quote)}>{quote.quote}</p>
+            <p key={quote.id}>{quote.quote}</p>
           </div>
         </div>
       ) : <div><p>Loading text...</p></div>}
