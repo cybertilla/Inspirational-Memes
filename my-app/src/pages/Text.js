@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 
 const Text = () => {
 
+  const memeId = useRef()
   const [quote, setModal] = useState(0);
   const [quotes, setQuote] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -22,15 +23,31 @@ const Text = () => {
     }
   }
 
-  function HandleClick(prop) {
+  function handleClick(prop) {
     setModal(prop)
+  }
+
+  function handleSubmit(event) {
+    event.preventDefault();
+    //console.log(memeId.current.value)
+
+    fetch('https://api.memegen.link/templates/' + memeId.current.value)
+      .then(response => response.json())
+      .then(data => {
+        console.log(data.blank)
+        event.target.reset();
+      })
+      .catch((error) => {
+        var element = document.getElementById("memeInput");
+        element.classList.add("is-invalid");
+      })
   }
 
 
   return (
     <div className='container mt-4'>
       {(quotes != null && quotes.length === 4) ? quotes.map((quote) =>
-        <div key={quote.id} className="card mt-2" data-bs-toggle="modal" data-bs-target="#myModal" onClick={() => HandleClick(quote.quote)}>
+        <div key={quote.id} className="card mt-2" data-bs-toggle="modal" data-bs-target="#myModal" onClick={() => handleClick(quote.quote)}>
           <div className="card-body">
             <p key={quote.id}>{quote.quote}</p>
           </div>
@@ -45,19 +62,12 @@ const Text = () => {
             </div>
             <div className="modal-footer">
 
-
-
-
-              <form id="memeId">
-                <input type="text" className="form-control"  placeholder="Meme ID..." />
+              <form id="memeId" onSubmit={handleSubmit}>
+                <input id="memeInput" type="text" className="form-control" placeholder="Meme ID..." ref={memeId} />
               </form>
 
               <button type="submit" form="memeId" className="btn btn-secondary">Save Meme</button>
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-
-
-
-
 
             </div>
           </div>
