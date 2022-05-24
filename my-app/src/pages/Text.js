@@ -1,4 +1,6 @@
 import React, { useRef, useState } from 'react';
+import { saveMeme } from "../LocalStorage";
+
 
 const Text = () => {
 
@@ -34,6 +36,9 @@ const Text = () => {
     fetch('https://api.memegen.link/templates/' + memeId.current.value)
       .then(response => response.json())
       .then(data => {
+        console.log(data)
+        let newMeme = {"text": quote, "url": data.blank}
+        saveMeme(newMeme)
         console.log(data.blank)
         event.target.reset();
       })
