@@ -24,8 +24,9 @@ const Meme = () => {
     <div className="container mt-4">
       {image === null ||
         <div>
-          <img src={image.image} className="mx-auto d-block" alt="Meme" />
-          <p>{image.id}</p>
+          
+          <img src={image.image} className="mx-auto d-block" alt="Meme" style={{}} />
+          <p className="text-center">{image.id}</p>
         </div>
       }
     </div>
