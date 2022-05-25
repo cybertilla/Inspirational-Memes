@@ -1,7 +1,6 @@
 import React, { useRef, useState } from 'react';
 import { saveMeme } from "../LocalStorage";
 
-
 const Text = () => {
 
   const memeId = useRef()
@@ -39,23 +38,25 @@ const Text = () => {
     } else {
 
       fetch('https://api.memegen.link/templates/' + memeId.current.value)
-      .then(response => response.json())
-      .then(data => {
-        let newMeme = { "text": quote, "url": data.blank + "?height=270&width=360" }
-        saveMeme(newMeme)
-        var element = document.getElementById("memeInput");
-        element.classList.remove("is-invalid");
-        event.target.reset();
-      })
-      .catch((error) => {
-        var element = document.getElementById("memeInput");
-        element.classList.add("is-invalid");
-      })
+        .then(response => response.json())
+        .then(data => {
+          let newMeme = { "text": quote, "url": data.blank + "?height=270&width=360" }
+          saveMeme(newMeme)
+          var element = document.getElementById("memeInput");
+          element.classList.add("is-valid");
+          element.classList.remove("is-invalid");
+          event.target.reset();
+        })
+        .catch((error) => {
+
+          var element = document.getElementById("memeInput");
+          element.classList.add("is-invalid");
+        })
 
     }
     //console.log(memeId.current.value)
 
-    
+
   }
 
 
@@ -67,7 +68,11 @@ const Text = () => {
             <p key={quote.id}>{quote.quote}</p>
           </div>
         </div>
-      ) : <div><p>Loading text...</p></div>}
+      ) : 
+      <div>
+          <img src="https://c.tenor.com/KEzW7ALwfUAAAAAC/cat-what.gif" alt="" width="600" height="480"  className="mx-auto d-block" />
+      </div>
+      }
 
       <div id="myModal" className="modal" tabIndex="-1">
         <div className="modal-dialog modal-fullscreen">
