@@ -31,21 +31,31 @@ const Text = () => {
 
   function handleSubmit(event) {
     event.preventDefault();
-    //console.log(memeId.current.value)
 
-    fetch('https://api.memegen.link/templates/' + memeId.current.value)
+    if (memeId.current.value === "") {
+      var element = document.getElementById("memeInput");
+      element.classList.add("is-invalid");
+      return;
+    } else {
+
+      fetch('https://api.memegen.link/templates/' + memeId.current.value)
       .then(response => response.json())
       .then(data => {
-        console.log(data)
-        let newMeme = {"text": quote, "url": data.blank}
+        let newMeme = { "text": quote, "url": data.blank + "?height=270&width=360" }
         saveMeme(newMeme)
-        console.log(data.blank)
+        var element = document.getElementById("memeInput");
+        element.classList.remove("is-invalid");
         event.target.reset();
       })
       .catch((error) => {
         var element = document.getElementById("memeInput");
         element.classList.add("is-invalid");
       })
+
+    }
+    //console.log(memeId.current.value)
+
+    
   }
 
 

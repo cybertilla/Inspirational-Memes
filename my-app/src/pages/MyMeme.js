@@ -5,13 +5,13 @@ const MyMeme = () => {
   let memes = loadMemes()
 
   return (
-    <div>
-      <div class="row">
+    <div className="container ">
+      <div class="row no-gutters">
         
           {(memes !== []) ? memes.map((meme) =>
-          <div class="col-sm">
+          <div className="col-md-6 col-lg-4 col-xl-3 mt-4">
             <div className="card h-100">
-              <img src={meme.url} class="card-img-top" alt="Meme"></img>
+              <img src={meme.url} className="card-img-top" alt="Meme"></img>
               <div className="card-body">
                 <p>{meme.text}</p>
               </div>
