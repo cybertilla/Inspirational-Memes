@@ -87,7 +87,7 @@ const Text = () => {
               </form>
 
               <button type="submit" form="memeId" className="btn btn-secondary">Save Meme</button>
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
 
             </div>
           </div>

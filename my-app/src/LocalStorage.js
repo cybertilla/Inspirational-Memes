@@ -18,3 +18,15 @@ export function saveMeme(meme) {
     localMemes.push(meme);
     localStorage.setItem("memes", JSON.stringify(localMemes));
 }
+
+export function DeleteMeme(index) {
+
+    let currentMemes = loadMemes();
+    currentMemes.splice(index, 1);
+    window.localStorage.setItem("memes", JSON.stringify(currentMemes));
+    
+    let card = document.getElementById(index)
+    card.remove()
+};
+
+
