@@ -42,7 +42,7 @@ const Meme = () => {
           <img src={image.image} className="mx-auto d-block" alt="Meme" />
           <p className="text-center">{image.id}</p>
 
-          <div className="d-grid gap-2 col-2 mx-auto mt-4">
+          <div className="d-grid gap-2 col-2 mx-auto mt-4 mb-4">
             <button className="btn btn-dark" type="button" onClick={fetchRequest}>Generate Meme</button>
           </div>
 
