@@ -1,4 +1,4 @@
-import React, { useCallback, useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { saveMeme } from "../LocalStorage";
 
 const Text = () => {
@@ -24,18 +24,17 @@ const Text = () => {
     }
   }
 
-  const fetchRequest = useCallback(() => {
-    
-    for (let i = 0; i < 4; i++) {
+  function newText(prop) {
 
-      fetch('https://api.quotable.io/random')
-        .then(response => response.json())
-        .then(data => {
-          quoteList.push({ "id": i, "quote": data.content })
-          setQuote([...quoteList]);
-        })
-    }
-  }, [quoteList]);
+    fetch('https://api.quotable.io/random')
+      .then(response => response.json())
+      .then(data => {
+        let toInsert = { "id": prop, "quote": data.content }
+        quotes.splice(prop, 1, toInsert);
+        setQuote([...quotes]);
+      })
+
+  };
 
   function handleClick(prop) {
     setModal(prop)
@@ -76,10 +75,15 @@ const Text = () => {
   return (
     <div className='container mt-4'>
       {(quotes != null && quotes.length === 4) ? quotes.map((quote) =>
-        <div key={quote.id} className="card mt-2" data-bs-toggle="modal" data-bs-target="#myModal" onClick={() => handleClick(quote.quote)}>
-          <div className="card-body">
+        <div key={quote.id} className="card mt-2">
+          <div className="col-12" >
+            <button className="btn btn-dark btn-sm float-end" type="button"onClick={() => newText(quote.id)}>New</button>
+          </div>
+          <div className="card-body" data-bs-toggle="modal" data-bs-target="#myModal" onClick={() => handleClick(quote.quote)}>
             <p key={quote.id}>{quote.quote}</p>
           </div>
+
+          
         </div>
 
       ) :
@@ -106,10 +110,6 @@ const Text = () => {
             </div>
           </div>
         </div>
-      </div>
-
-      <div className="d-grid gap-2 col-2 mx-auto mt-4 mb-4">
-        <button className="btn btn-dark" type="button" onClick={fetchRequest}>Generate Text</button>
       </div>
     </div>
   );
