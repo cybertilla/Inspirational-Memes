@@ -10,11 +10,11 @@ const Text = () => {
   let quoteList = []
 
   if (quotes === null && loading === false) {
-
+    //this prevents quotes to load "on top of eachother"
     setLoading(true);
 
     for (let i = 0; i < 4; i++) {
-
+      //fetch a random inspirational quote
       fetch('https://api.quotable.io/random')
         .then(response => response.json())
         .then(data => {
@@ -25,7 +25,7 @@ const Text = () => {
   }
 
   function newText(prop) {
-
+    //loads a new quote when user clicks on new button
     fetch('https://api.quotable.io/random')
       .then(response => response.json())
       .then(data => {
@@ -36,6 +36,7 @@ const Text = () => {
 
   };
 
+  //opens a modal when a quote is chosen
   function handleClick(prop) {
     setModal(prop)
   }
@@ -48,7 +49,7 @@ const Text = () => {
       element.classList.add("is-invalid");
       return;
     } else {
-
+      //if a valid memeID is given, same the meme image of the right ID
       fetch('https://api.memegen.link/templates/' + memeId.current.value)
         .then(response => response.json())
         .then(data => {
@@ -66,7 +67,6 @@ const Text = () => {
         })
 
     }
-    //console.log(memeId.current.value)
 
 
   }
@@ -79,7 +79,7 @@ const Text = () => {
           <div className="col-12" >
             <button className="btn btn-dark btn-sm float-end" type="button"onClick={() => newText(quote.id)}>New</button>
           </div>
-          <div className="card-body" data-bs-toggle="modal" data-bs-target="#myModal" onClick={() => handleClick(quote.quote)}>
+          <div className="card-body pt-0" data-bs-toggle="modal" data-bs-target="#myModal" onClick={() => handleClick(quote.quote)}>
             <p key={quote.id}>{quote.quote}</p>
           </div>
 
@@ -88,7 +88,7 @@ const Text = () => {
 
       ) :
         <div>
-          <img src="https://c.tenor.com/KEzW7ALwfUAAAAAC/cat-what.gif" alt="" width="600" height="480" className="mx-auto d-block" />
+          <img src="https://c.tenor.com/KEzW7ALwfUAAAAAC/cat-what.gif" alt="loading cat gif" width="600" height="480" className="mx-auto d-block" />
         </div>
       }
 

@@ -18,7 +18,7 @@ const MyMeme = () => {
               <button type="button" className="btn btn-danger btn-sm" onClick={() => DeleteMeme(i)}>Delete</button>
             </div>
             </div>
-          ) : <p className="mt-4">You have no memes saved</p>}
+          ) : <p className="mt-4">You have no memez saved</p>}
         </div>
       
     </div >

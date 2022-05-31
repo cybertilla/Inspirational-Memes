@@ -13,14 +13,14 @@ export function loadMemes() {
 }
 
 export function saveMeme(meme) {
-    //Saves a todo to local storage in JSON-format
+    //Saves a meme to local storage in JSON-format
     let localMemes = loadMemes();
     localMemes.push(meme);
     localStorage.setItem("memes", JSON.stringify(localMemes));
 }
 
 export function DeleteMeme(index) {
-
+    //Removes a meme
     let currentMemes = loadMemes();
     currentMemes.splice(index, 1);
     window.localStorage.setItem("memes", JSON.stringify(currentMemes));

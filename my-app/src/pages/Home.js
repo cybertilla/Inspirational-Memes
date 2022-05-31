@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const Home = () => {
     return (
         <div className="container mt-5">
-            <h1 className="text-center">Inspirtional mems</h1>
+            <h1 className="text-center">Inspirtional memz</h1>
             <div class="card">
                 <div class="card-body">
                     <p className="text-center">Welcome to Inspirtional Mems, a game in which you can

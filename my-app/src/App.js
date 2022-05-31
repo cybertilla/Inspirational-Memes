@@ -1,4 +1,3 @@
-import './App.css';
 import Home from "./pages/Home";
 import Meme from "./pages/Meme";
 import Text from "./pages/Text";
