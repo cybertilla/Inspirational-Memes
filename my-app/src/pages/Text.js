@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useCallback, useRef, useState } from 'react';
 import { saveMeme } from "../LocalStorage";
 
 const Text = () => {
@@ -23,6 +23,19 @@ const Text = () => {
         })
     }
   }
+
+  const fetchRequest = useCallback(() => {
+    
+    for (let i = 0; i < 4; i++) {
+
+      fetch('https://api.quotable.io/random')
+        .then(response => response.json())
+        .then(data => {
+          quoteList.push({ "id": i, "quote": data.content })
+          setQuote([...quoteList]);
+        })
+    }
+  }, [quoteList]);
 
   function handleClick(prop) {
     setModal(prop)
@@ -68,10 +81,11 @@ const Text = () => {
             <p key={quote.id}>{quote.quote}</p>
           </div>
         </div>
-      ) : 
-      <div>
-          <img src="https://c.tenor.com/KEzW7ALwfUAAAAAC/cat-what.gif" alt="" width="600" height="480"  className="mx-auto d-block" />
-      </div>
+
+      ) :
+        <div>
+          <img src="https://c.tenor.com/KEzW7ALwfUAAAAAC/cat-what.gif" alt="" width="600" height="480" className="mx-auto d-block" />
+        </div>
       }
 
       <div id="myModal" className="modal" tabIndex="-1">
@@ -94,6 +108,9 @@ const Text = () => {
         </div>
       </div>
 
+      <div className="d-grid gap-2 col-2 mx-auto mt-4 mb-4">
+        <button className="btn btn-dark" type="button" onClick={fetchRequest}>Generate Text</button>
+      </div>
     </div>
   );
 
