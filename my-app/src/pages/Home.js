@@ -23,14 +23,18 @@ const Home = () => {
                 </div>
             </div>
             <div>
-                <br/>
+                <br />
                 <h2 className="text-center">Start Game!</h2>
-                <div className="d-grid gap-2 col-2 mx-auto mt-4">
-                    <button className="btn btn-dark" type="button"><Link style={{ textDecoration: "none", color: "white" }} to="/Meme">Generate Meme</Link> </button>
-                </div>
-                <div className="d-grid gap-2 col-2 mx-auto mt-4">
-                    <button className="btn btn-dark" type="button"><Link style={{ textDecoration: "none", color: "white" }} to="/Text">Generate Text</Link></button>
-                </div>
+                <Link style={{ textDecoration: "none", color: "white" }} to="/Meme">
+                    <div className="d-grid gap-2 col-2 mx-auto mt-4">
+                        <button className="btn btn-dark" type="button">Generate Meme </button>
+                    </div>
+                </Link>
+                <Link style={{ textDecoration: "none", color: "white" }} to="/Text">
+                    <div className="d-grid gap-2 col-2 mx-auto mt-4">
+                        <button className="btn btn-dark" type="button">Generate Text</button>
+                    </div>
+                </Link>
             </div>
         </div>
 
