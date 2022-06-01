@@ -23,7 +23,7 @@ function App() {
                 <a className="nav-link" aria-current="page" href="/MyMeme">My mems</a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" aria-current="page" href="/Text">Generate Text</a>
+                <a className="nav-link" aria-current="page" href="/Text">Generate Quote</a>
               </li>
               <li className="nav-item">
                 <a className="nav-link" href="/Meme">Generate Meme</a>

@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useState } from 'react';
 
 
 
@@ -6,22 +6,20 @@ const Meme = () => {
   const [image, setImage] = useState(null);
   const [loading, setLoading] = useState(false);
 
-  useEffect(() => {
-    // Update the document title using the browser API
-    if (image === null && loading === false) {
-      //check that loading is false (prevents the following from running on itself)
-      setLoading(true);
-      fetch('https://api.memegen.link/templates')
-        .then(response => response.json())
-        .then(data => {
-          // Returns a random number
-          let number = Math.floor(Math.random() * data.length);
-          let img = data[number]
-          setImage({ "image": img.blank, "id": img.id })
-        });
-    }
+  // Update the document title using the browser API
+  if (image === null && loading === false) {
+    //check that loading is false (prevents the following from running on itself)
+    setLoading(true);
+    fetch('https://api.memegen.link/templates')
+      .then(response => response.json())
+      .then(data => {
+        // Returns a random number
+        let number = Math.floor(Math.random() * data.length);
+        let img = data[number]
+        setImage({ "image": img.blank, "id": img.id })
+      });
+  }
 
-  }, [image, loading]);
 
   const fetchRequest = useCallback(() => {
     //fetch a random meme template using math.floor
