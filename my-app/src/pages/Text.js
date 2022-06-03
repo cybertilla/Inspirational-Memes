@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import { saveMeme } from "../LocalStorage";
+import { loadMemes, saveMeme } from "../LocalStorage";
 
 const Text = () => {
 
@@ -48,12 +48,28 @@ const Text = () => {
       var element = document.getElementById("memeInput");
       element.classList.add("is-invalid");
       return;
-    } else {
+    } 
+    else {
       //if a valid memeID is given, same the meme image of the right ID
-      fetch('https://api.memegen.link/templates/' + memeId.current.value)
+      var memeAlreadyInStorage = false;
+      var memes = loadMemes();
+      for (let i = 0; i < memes.length; i++) {
+        if (memes[i].memeId === memeId.current.value )
+        {
+          if(quote === memes[i].text)
+          {
+            memeAlreadyInStorage = true;
+            break;
+          }
+        }
+        
+      }
+      if (!memeAlreadyInStorage)
+      {
+        fetch('https://api.memegen.link/templates/' + memeId.current.value)
         .then(response => response.json())
         .then(data => {
-          let newMeme = { "text": quote, "url": data.blank + "?height=270&width=360" }
+          let newMeme = { "text": quote, "url": data.blank + "?height=270&width=360", "memeId": memeId.current.value}
           saveMeme(newMeme)
           var element = document.getElementById("memeInput");
           element.classList.add("is-valid");
@@ -65,6 +81,13 @@ const Text = () => {
           var element = document.getElementById("memeInput");
           element.classList.add("is-invalid");
         })
+      }
+      else
+      {
+        var element = document.getElementById("memeInput");
+        element.classList.add("is-invalid");
+        event.target.reset();
+      }
 
     }
 
